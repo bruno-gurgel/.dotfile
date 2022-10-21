@@ -1,0 +1,8 @@
+require 'settings'
+require 'keymaps'
+require 'plugins/coc'
+require 'plugins/dashboard'
+require 'plugins/lualine'
+require 'plugins/nvim-tree'
+require 'plugins/nvim-ts-autotag'
+require 'plugins/gitsigns'
