@@ -14,8 +14,9 @@ opt.hls = true
 opt.is = true
 opt.hlsearch = true
 opt.incsearch = true
-opt.foldexpr = 'nvim_treesitter#foldexpr()'
-opt.foldmethod = 'manual'
+opt.foldlevel = 20
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 cmd[[
 let g:python3_host_prog="/usr/bin/python3"
@@ -52,6 +53,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'glepnir/dashboard-nvim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'wakatime/vim-wakatime'
 vim.call('plug#end')
 
 
