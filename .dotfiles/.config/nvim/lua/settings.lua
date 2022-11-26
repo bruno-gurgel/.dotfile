@@ -3,6 +3,8 @@ local opt = vim.opt
 local cmd = vim.cmd
 local Plug = vim.fn['plug#']
 
+
+
 opt.scrolloff=8
 opt.number = true
 opt.relativenumber = true
@@ -44,7 +46,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'github/copilot.vim'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-tree/nvim-tree.lua'
 Plug 'preservim/nerdcommenter'
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
@@ -54,6 +55,8 @@ Plug 'tpope/vim-rhubarb'
 Plug 'glepnir/dashboard-nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wakatime/vim-wakatime'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 vim.call('plug#end')
 
 
