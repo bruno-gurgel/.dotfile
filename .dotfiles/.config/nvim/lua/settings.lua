@@ -57,6 +57,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'phaazon/hop.nvim'
+Plug 'sindrets/diffview.nvim'
 vim.call('plug#end')
 
 

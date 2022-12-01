@@ -75,8 +75,8 @@ keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
 
 
 -- Formatting selected code.
-keyset("x", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
-keyset("n", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
+keyset("x", "<leader>s", "<Plug>(coc-format-selected)", {silent = true})
+keyset("n", "<leader>s", "<Plug>(coc-format-selected)", {silent = true})
 
 
 -- Setup formatexpr specified filetype(s).
@@ -178,4 +178,4 @@ keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 -- Do default action for previous item.
 keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list.
-keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+--keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
