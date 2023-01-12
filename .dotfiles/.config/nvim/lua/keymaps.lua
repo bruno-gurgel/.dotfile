@@ -11,10 +11,27 @@ map('n', '<C-p>', ':GFiles<CR>', opts)
 map('n', '<leader>pf', ':Files<CR>', opts)
 map('n', '<C-j>', ':cnext<CR>', opts)
 map('n', '<C-k>', ':cprev<CR>', opts)
-map('n', '<C-t>', ':NvimTreeToggle<CR>', opts)
 map('n', '<C-e>', ':Explore<CR>', opts)
 vim.keymap.set('n', 'ff', builtin.find_files, {})
 vim.keymap.set('n', 'fg', builtin.live_grep, {})
 vim.keymap.set('n', 'fb', builtin.buffers, {})
 vim.keymap.set('n', 'fh', builtin.help_tags, {})
+
+-- HOP
+local hop = require('hop')
+local directions = require('hop.hint').HintDirection
+vim.keymap.set('', 'f', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+end, {remap=true})
+vim.keymap.set('', 'F', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+end, {remap=true})
+vim.keymap.set('', 't', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+end, {remap=true})
+vim.keymap.set('', 'T', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+end, {remap=true})
+
+map('n', '<C-w>', ':HopWord<CR>', opts)
 
