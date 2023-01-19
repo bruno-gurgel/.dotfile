@@ -59,6 +59,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'phaazon/hop.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'ThePrimeagen/harpoon'
+Plug 'mbbill/undotree'
 vim.call('plug#end')
 
 
