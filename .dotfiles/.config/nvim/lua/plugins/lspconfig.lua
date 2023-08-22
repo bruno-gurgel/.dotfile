@@ -40,6 +40,7 @@ nvim_lsp.dockerls.setup{
 
 -- ESlint
 nvim_lsp.eslint.setup {
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
@@ -58,6 +59,12 @@ nvim_lsp.python.setup{
 nvim_lsp.tailwindcss.setup{
   on_attach = on_attach
 }
+
+-- Diagnostic
+
+vim.diagnostic.config({
+  virtual_text = false, -- Turn off inline diagnostics
+})
 
 
 -- Global mappings.

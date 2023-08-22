@@ -1,8 +1,5 @@
-local g = vim.g
 local opt = vim.opt
 local cmd = vim.cmd
-local Plug = vim.fn['plug#']
-
 
 
 opt.scrolloff=8
@@ -20,58 +17,66 @@ opt.foldlevel = 20
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
-cmd[[
-let g:python3_host_prog="/usr/bin/python3"
-]]
-
-vim.call('plug#begin', '~/.vim/plugged')
-Plug('nvim-treesitter/nvim-treesitter', {
-  ['do'] = function()
-    vim.call('TSUpdate')
-  end
-})
-cmd[[
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-]]
-cmd[[
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-]]
-Plug 'junegunn/fzf.vim'
-Plug 'morhetz/gruvbox'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'github/copilot.vim'
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'preservim/nerdcommenter'
-Plug 'windwp/nvim-autopairs'
-Plug 'windwp/nvim-ts-autotag'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'glepnir/dashboard-nvim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'wakatime/vim-wakatime'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'phaazon/hop.nvim'
-Plug 'sindrets/diffview.nvim'
-Plug 'ThePrimeagen/harpoon'
-Plug 'mbbill/undotree'
-vim.call('plug#end')
+vim.g.mapleader = " "
 
 
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-cmd[[
-colorscheme gruvbox
-]]
+require("lazy").setup({
+    'junegunn/fzf.vim',
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
+    'onsails/lspkind-nvim',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim', tag = '0.1.2', branch = '0.1.x',dependencies = { 'nvim-lua/plenary.nvim' },
+    'nvim-telescope/telescope-fzy-native.nvim',
+    "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {},
+    'nvim-lualine/lualine.nvim',
+    'nvim-tree/nvim-web-devicons',
+    "L3MON4D3/LuaSnip", version = "2.*", build = "make install_jsregexp",
+    "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
+    'windwp/nvim-autopairs', event = "InsertEnter", opts = {},
+    "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    'nvimdev/lspsaga.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    'jose-elias-alvarez/null-ls.nvim',
+    'MunifTanjim/prettier.nvim',
+    'lewis6991/gitsigns.nvim',
+    'github/copilot.vim',
+    'tpope/vim-commentary',
+    'tpope/vim-rhubarb',
+    'tpope/vim-fugitive',
+    'tpope/vim-surround',
+    'windwp/nvim-ts-autotag',
+    'ThePrimeagen/harpoon',
+    'mfussenegger/nvim-dap',
+    "jay-babu/mason-nvim-dap.nvim",
+    "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, opts = {},
+    "folke/zen-mode.nvim", opts = {},
+    "ThePrimeagen/refactoring.nvim", dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("refactoring").setup()
+    end,
+    "lukas-reineke/indent-blankline.nvim",
+    'norcalli/nvim-colorizer.lua'
+  }, {})
 
-cmd[[
-augroup highlight_yank
-autocmd!
-au TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=700})
-augroup END
-]]
+  vim.cmd[[colorscheme tokyonight]]
