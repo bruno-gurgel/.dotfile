@@ -53,7 +53,7 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     'nvim-tree/nvim-web-devicons',
     "L3MON4D3/LuaSnip", version = "2.*", build = "make install_jsregexp",
-    "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
+    "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
     'windwp/nvim-autopairs', event = "InsertEnter", opts = {},
     "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     'nvimdev/lspsaga.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
@@ -76,7 +76,9 @@ require("lazy").setup({
       require("refactoring").setup()
     end,
     "lukas-reineke/indent-blankline.nvim",
-    'norcalli/nvim-colorizer.lua'
+    'norcalli/nvim-colorizer.lua',
+    'JoosepAlviste/nvim-ts-context-commentstring', build = ":TSUpdate", dependencies = { "nvim-treesitter/nvim-treesitter" },
+    "kdheepak/lazygit.nvim", dependencies = { "nvim-lua/plenary.nvim" },
   }, {})
 
   vim.cmd[[colorscheme tokyonight]]

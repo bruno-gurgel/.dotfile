@@ -17,8 +17,10 @@ telescope.setup {
         },
         ["n"] = {
           -- your custom normal mode mappings
-          ["N"] = fb_actions.create,
+          ["%"] = fb_actions.create,
           ["h"] = fb_actions.goto_parent_dir,
+          ["D"] = fb_actions.remove,
+          ["R"] = fb_actions.rename,
           ["/"] = function()
             vim.cmd('startinsert')
           end
@@ -40,6 +42,6 @@ vim.keymap.set("n", "sf", function()
     grouped = true,
     previewer = false,
     initial_mode = "normal",
-    layout_config = { height = 40 }
+      layout_config = { height = 40 },
   })
 end)
